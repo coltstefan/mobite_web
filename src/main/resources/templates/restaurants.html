@@ -12,12 +12,14 @@
 
 <div class="container my-2">
     <h1>Restaurants List</h1>
+    <a th:href="@{restaurants/newRestaurant}" class="btn btn-primary">Add New Restaurant</a>
 <table border="1" class="table table-striped table-responsive-md">
     <thead>
     <tr>
         <th>Restaurant ID</th>
         <th>Restaurant Name</th>
         <th>Profile</th>
+
     </tr>
     </thead>
     <tbody>
@@ -25,6 +27,8 @@
             <td th:text="${restaurant.id}">id</td>
             <td th:text="${restaurant.name}">name</td>
             <td> <a th:href="@{/restaurants/{id}(id=${restaurant.id})}" class="btn btn-primary">Profile</a> </td>
+          <!--  <td> <a th:href="@{/restaurants/showFormForUpdate/{id}(id=${restaurant.id})}" class="btn btn-secondary">Update</a> </td>
+            <td> <a th:href="@{restaurants/deleteRestaurant/{id}(id=${restaurant.id})}" class="btn btn-danger">Delete</a> </td>   -->
 
 
         </tr>

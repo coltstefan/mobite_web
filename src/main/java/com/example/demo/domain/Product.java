@@ -4,12 +4,14 @@ package com.example.demo.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@EqualsAndHashCode
-@ToString(exclude = {"restaurant"})
+@EqualsAndHashCode(exclude = {"restaurant" , "order"})
+@ToString(exclude = {"restaurant" , "order"})
 @NoArgsConstructor
 public class Product {
 
@@ -27,6 +29,9 @@ public class Product {
 
     @ManyToOne
     private Restaurant restaurant;
+
+    @ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST )
+    private Set<Order> orders = new HashSet<>();
 
     public Product(String name, String description, double price , int stock){
         this.name = name;

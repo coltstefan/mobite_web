@@ -12,7 +12,8 @@
 <div class="container my-2">
     <h1 th:text="${restaurant.name}">profile</h1>
     <a th:href="@{/products/{id}(id=${restaurant.id})}" class="btn btn-danger">Products</a>
-    <a th:href="@{/restaurants/{id}(id=${restaurant.id})}" class="btn btn-primary">Orders</a>
+    <a th:href="@{/restaurants/clients/{id}(id=${restaurant.id})}" class="btn btn-success">Clients</a>
+    <a th:href="@{/restaurants/orders/{id}(id=${restaurant.id})}" class="btn btn-primary">Orders</a>
 </div>
 
 

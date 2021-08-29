@@ -22,13 +22,36 @@ public class Restaurant {
 
     private String name;
 
+    @OneToMany(mappedBy = "restaurant" , cascade = CascadeType.ALL , fetch = FetchType.EAGER)
+    private Set<Client> clients = new HashSet<>();
+
     @OneToMany(mappedBy = "restaurant" , cascade = CascadeType.DETACH)
     private Set<Product> products = new HashSet<>();
+
+
+    @OneToMany(mappedBy = "restaurant" , cascade = CascadeType.REMOVE , fetch = FetchType.EAGER)
+    private Set<Order> orders = new HashSet<>();
+
+
 
     public void addProduct(Product p){
         products.add(p);
         p.setRestaurant(this);
     }
+
+    public void addClient(Client c)
+    {
+        clients.add(c);
+        c.setRestaurant(this);
+    }
+
+    public void addOrder(Order o){
+
+        orders.add(o);
+        o.setRestaurant(this);
+
+    }
+
 
     public Restaurant(String name) {
         this.name = name;
